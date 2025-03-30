@@ -1,0 +1,23 @@
+services:
+  custom-drupalweb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: drupal-custom
+    ports:
+      - '8080:80'
+
+  postgresdb:
+    image: postgres
+    environment:
+        POSTGRES_USER: boringnerd
+        POSTGRES_PASSWORD: notthatsecretpassword
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
+
+volumes:
+  drupal-data:
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
